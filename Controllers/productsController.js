@@ -3,16 +3,15 @@ import { nanoid } from 'nanoid' ;
 import dotenv from 'dotenv'
 dotenv.config()
 
-const getID = async() => {
-    return  nanoid(7);
-}
- 
+
+
 export const handleAddProduct = async(req, res) => {
     try{
 
         //console.log(req.body);
-        const id = await getID();
-        console.log("add prod", id)
+        // const id = nanoid(7);
+        const id = Math.random().toString(36).substring(2,9);
+        console.log("add new prod",id)
         const product_ID = "BK-" + id
         console.log("handle add prod") 
         const newProduct = new Product({...req.body, product_ID})
